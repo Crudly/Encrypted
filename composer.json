@@ -1,0 +1,39 @@
+{
+    "name": "crudly/encrypted",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Larzs",
+            "email": "wester@inbox.lv",
+            "homepage": "https://github.com/orgs/crudly/people/Larzs"
+        }
+    ],
+    "homepage": "https://github.com/crudly/encrypted",
+    "keywords": ["Laravel", "CRUD", "Encrypting"],
+    "require": {
+        "laravel/framework": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.1",
+        "orchestra/testbench": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crudly\\Encrypted\\Tests\\": "tests"
+        }
+    },
+    "autoload-dev": {
+
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+	        "providers": [
+	            "Crudly\\Encrypted\\Provider"
+	        ]
+	    }
+    }
+}

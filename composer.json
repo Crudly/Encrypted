@@ -7,6 +7,11 @@
             "name": "Larzs",
             "email": "wester@inbox.lv",
             "homepage": "https://github.com/orgs/crudly/people/Larzs"
+        },
+        {
+            "name": "Juris Evertovskis",
+            "email": "juris@glaive.pro",
+            "homepage": "https://github.com/tontonsb"
         }
     ],
     "homepage": "https://github.com/crudly/encrypted",
@@ -29,11 +34,6 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
-        },
-        "laravel": {
-	        "providers": [
-	            "Crudly\\Encrypted\\Provider"
-	        ]
-	    }
+        }
     }
 }

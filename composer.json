@@ -1,6 +1,6 @@
 {
     "name": "crudly/encrypted",
-    "description": "",
+    "description": "Encryption cast for Eloquent",
     "license": "MIT",
     "authors": [
         {
@@ -15,7 +15,7 @@
         }
     ],
     "homepage": "https://github.com/crudly/encrypted",
-    "keywords": ["Laravel", "CRUD", "Encrypting"],
+    "keywords": ["Laravel", "Eloquent", "Encrypting"],
     "require": {
         "laravel/framework": "^7.0"
     },

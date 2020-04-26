@@ -24,17 +24,5 @@ class Model extends Eloquent
 
 		'bool_bool' => Encrypted::class.':bool',
 		'bool_boolean' => Encrypted::class.':boolean',
-
-		'object' => Encrypted::class.':object',
-
-		'array_array' => Encrypted::class.':array',
-		'array_json' => Encrypted::class.':json',
-
-		'date_date' => Encrypted::class.':date',
-
-		'datetime_datetime' => Encrypted::class.':datetime',
-		'datetime_custom_datetime' => Encrypted::class.':custom_datetime',
-
-		'timestamp' => Encrypted::class.':timestamp',
 	];
 }

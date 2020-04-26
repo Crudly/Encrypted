@@ -2,6 +2,19 @@
 
 A custom cast class for Laravel Eloquent that encrypts or hashes your values. Package is small and provides just a few, simple, well tested features.
 
+```php
+protected $casts = [
+    // hashes the value when assigning to $model->password
+    'password' => Password::class,
+
+    // encrypts on write, decrypts on read
+    'classified' => Encrypted::class,
+
+    // encrypts on write, decrypts & typecasts on read
+    'secret' => Encrypted::class.':integer',
+];
+```
+
 ## Installation
 
 Use composer.

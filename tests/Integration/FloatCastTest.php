@@ -45,8 +45,6 @@ class FloatCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
-
-		$this->assertIsFloat($get);
 		$this->assertSame($this->value, $get);
     }
 
@@ -59,14 +57,10 @@ class FloatCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['float_float' => encrypt(35)]);
 		$get = $this->model->float_float;
-
-		$this->assertIsFloat($get);
 		$this->assertSame(35.0, $get);
 
 		$this->model->setRawAttributes(['float_float' => encrypt('49.87')]);
 		$get = $this->model->float_float;
-
-		$this->assertIsFloat($get);
 		$this->assertSame(49.87, $get);
 	}
 
@@ -79,8 +73,6 @@ class FloatCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['float_real' => encrypt('22.3')]);
 		$get = $this->model->float_real;
-
-		$this->assertIsFloat($get);
 		$this->assertSame(22.3, $get);
 	}
 
@@ -93,8 +85,6 @@ class FloatCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['float_double' => encrypt((int) 15)]);
 		$get = $this->model->float_double;
-
-		$this->assertIsFloat($get);
 		$this->assertSame(15.0, $get);
 	}
 }

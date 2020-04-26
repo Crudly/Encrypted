@@ -45,8 +45,6 @@ class BoolCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
-
-		$this->assertIsBool($get);
 		$this->assertSame($this->value, $get);
     }
 

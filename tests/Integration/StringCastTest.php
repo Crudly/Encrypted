@@ -45,8 +45,6 @@ class StringCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
-
-		$this->assertIsString($get);
 		$this->assertSame($this->value, $get);
 	}
 
@@ -59,8 +57,6 @@ class StringCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['string' => encrypt(60.1)]);
 		$get = $this->model->string;
-
-		$this->assertIsString($get);
 		$this->assertSame('60.1', $get);
 	}
 }

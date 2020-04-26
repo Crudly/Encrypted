@@ -45,8 +45,6 @@ class ArrayCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
-
-		$this->assertIsArray($get);
 		$this->assertSame($this->value, $get);
     }
 }

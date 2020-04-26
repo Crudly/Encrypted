@@ -47,8 +47,6 @@ class ObjectCastTest extends TestCase
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
-
-		$this->assertIsObject($get);
 		$this->assertInstanceOf(Collection::class, $get);
 		$this->assertEquals($this->value, $get);
     }

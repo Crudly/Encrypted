@@ -3,6 +3,7 @@
 namespace Crudly\Encrypted\Tests\Models;
 
 use Crudly\Encrypted\Encrypted;
+use Crudly\Encrypted\Password;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Model extends Eloquent
@@ -24,5 +25,7 @@ class Model extends Eloquent
 
 		'bool_bool' => Encrypted::class.':bool',
 		'bool_boolean' => Encrypted::class.':boolean',
+
+		'password' => Password::class,
 	];
 }

@@ -39,6 +39,7 @@ class CasterTest extends TestCase
 
 		$this->assertIsString($caster->coerce(12));
 		$this->assertSame('98.00', $caster->coerce(98));
+		$this->assertSame('24.00', $caster->coerce('24'));
 		$this->assertSame('78.99', $caster->coerce(78.9898));
 	}
 

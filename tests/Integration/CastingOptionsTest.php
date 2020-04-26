@@ -2,7 +2,6 @@
 
 namespace Crudly\Encrypted\Tests\Integration;
 
-use Crudly\Encrypted\Cast;
 use Crudly\Encrypted\Tests\TestCase;
 use Crudly\Encrypted\Tests\Models\Model;
 

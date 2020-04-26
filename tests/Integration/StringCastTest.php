@@ -26,7 +26,7 @@ class StringCastTest extends TestCase
      *
      * @return void
      */
-    public function testStringSetter()
+    public function testSetter()
     {
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
@@ -41,7 +41,7 @@ class StringCastTest extends TestCase
      *
      * @return void
      */
-    public function testStringGetter()
+    public function testGetter()
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
@@ -55,7 +55,7 @@ class StringCastTest extends TestCase
      *
      * @return void
      */
-    public function testStringCaster()
+    public function testCaster()
     {
 		$this->model->setRawAttributes(['string' => encrypt(60.1)]);
 		$get = $this->model->string;

@@ -45,11 +45,17 @@ class Caster
      */
 	protected function getCastType()
 	{
-		return $this->castType;
+        if ($this->isCustomDateTimeCast($this->castType))
+            return 'custom_datetime';
+
+		if ($this->isDecimalCast($this->castType))
+			return 'decimal';
+
+		return trim(strtolower($this->castType));
 	}
 
 	/**
-     * Tell HasAttributes:castAttribute that we don't use further casting classes.
+     * Tell HasAttributes::castAttribute that we don't use further casting classes.
 	 * Might allow in the future if there are some use cases.
      *
      * @return bool
@@ -57,5 +63,15 @@ class Caster
     protected function isClassCastable()
     {
         return false;
+	}
+
+    /**
+     * Scam the casts array for HasAttributes::castAttribute.
+     *
+     * @return array
+     */
+    public function getCasts()
+    {
+        return [null => $this->castType];
     }
 }

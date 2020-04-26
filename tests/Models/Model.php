@@ -17,8 +17,8 @@ class Model extends Eloquent
 		'float_float' => Encrypted::class.':float',
 		'float_double' => Encrypted::class.':double',
 
-		'float_decimal2' => Encrypted::class.':decimal:2',
-		'float_decimal4' => Encrypted::class.':decimal:4',
+		'decimal_2' => Encrypted::class.':decimal:2',
+		'decimal_4' => Encrypted::class.':decimal:4',
 
 		'string' => Encrypted::class.':string',
 

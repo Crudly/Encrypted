@@ -2,6 +2,7 @@
 
 namespace Crudly\Encrypted;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 
 class Caster
@@ -34,6 +35,21 @@ class Caster
 	 */
 	public function coerce($value)
 	{
+		if (!is_string($value))
+		{
+			if (in_array($this->castType, ['array', 'json']))
+				return (array) $value;
+			
+			if ('collection' == $this->castType)
+				return $value instanceof Collection ? $value : collect($value);
+
+			if ('object' == $this->castType)
+				return (object) $value;
+
+			if (in_array($this->castType, ['date', 'datetime']) && is_object($value))
+				return (object) $value;
+		}
+
 		// Don't specify key, we override getCastType to provide correct type.
 		return $this->castAttribute(null, $value);
 	}

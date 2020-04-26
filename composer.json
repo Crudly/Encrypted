@@ -17,11 +17,11 @@
     "homepage": "https://github.com/crudly/encrypted",
     "keywords": ["Laravel", "Eloquent", "Encrypting"],
     "require": {
-        "laravel/framework": "^7.0"
+        "laravel/framework": "^6.0 || ^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.1",
-        "orchestra/testbench": "^5.1"
+        "phpunit/phpunit": ">=8.0",
+        "orchestra/testbench": ">=4.0"
     },
     "autoload": {
         "psr-4": {

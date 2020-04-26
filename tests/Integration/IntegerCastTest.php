@@ -49,4 +49,38 @@ class IntegerCastTest extends TestCase
 		$this->assertIsInt($get);
 		$this->assertSame($this->value, $get);
     }
+
+    /**
+     * Casting to integer.
+     *
+     * @return void
+     */
+    public function testIntegerCaster()
+    {
+		$this->model->setRawAttributes(['integer_integer' => encrypt(60.1)]);
+		$get = $this->model->integer_integer;
+
+		$this->assertIsInt($get);
+		$this->assertSame(60, $get);
+
+		$this->model->setRawAttributes(['integer_integer' => encrypt('55')]);
+		$get = $this->model->integer_integer;
+		
+		$this->assertIsInt($get);
+		$this->assertSame(55, $get);
+	}
+
+    /**
+     * Casting to integer (alias `int`).
+     *
+     * @return void
+     */
+    public function testIntegerCasterAliasInt()
+    {
+		$this->model->setRawAttributes(['integer_int' => encrypt(73.4)]);
+		$get = $this->model->integer_int;
+
+		$this->assertIsInt($get);
+		$this->assertSame(73, $get);
+	}
 }

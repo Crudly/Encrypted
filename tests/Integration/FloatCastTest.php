@@ -49,4 +49,52 @@ class FloatCastTest extends TestCase
 		$this->assertIsFloat($get);
 		$this->assertSame($this->value, $get);
     }
+
+    /**
+     * Casting to float.
+     *
+     * @return void
+     */
+    public function testFloatCaster()
+    {
+		$this->model->setRawAttributes(['float_float' => encrypt(35)]);
+		$get = $this->model->float_float;
+
+		$this->assertIsFloat($get);
+		$this->assertSame(35.0, $get);
+
+		$this->model->setRawAttributes(['float_float' => encrypt('49.87')]);
+		$get = $this->model->float_float;
+
+		$this->assertIsFloat($get);
+		$this->assertSame(49.87, $get);
+	}
+
+    /**
+     * Casting to float (alias `real`).
+     *
+     * @return void
+     */
+    public function testFloatCasterAliasReal()
+    {
+		$this->model->setRawAttributes(['float_real' => encrypt('22.3')]);
+		$get = $this->model->float_real;
+
+		$this->assertIsFloat($get);
+		$this->assertSame(22.3, $get);
+	}
+
+    /**
+     * Casting to float (alias `double`).
+     *
+     * @return void
+     */
+    public function testFloatCasterAliasDouble()
+    {
+		$this->model->setRawAttributes(['float_double' => encrypt((int) 15)]);
+		$get = $this->model->float_double;
+
+		$this->assertIsFloat($get);
+		$this->assertSame(15.0, $get);
+	}
 }

@@ -49,4 +49,48 @@ class BoolCastTest extends TestCase
 		$this->assertIsBool($get);
 		$this->assertSame($this->value, $get);
     }
+
+    /**
+     * Casting to bool.
+     *
+     * @return void
+     */
+    public function testBoolCaster()
+    {
+		$this->model->setRawAttributes(['bool_bool' => encrypt('true')]);
+		$get = $this->model->bool_bool;
+		$this->assertSame(true, $get);
+
+		$this->model->setRawAttributes(['bool_bool' => encrypt('false')]);
+		$get = $this->model->bool_bool;
+		$this->assertSame(true, $get);
+
+		$this->model->setRawAttributes(['bool_bool' => encrypt(1)]);
+		$get = $this->model->bool_bool;
+		$this->assertSame(true, $get);
+
+		$this->model->setRawAttributes(['bool_bool' => encrypt(15)]);
+		$get = $this->model->bool_bool;
+		$this->assertSame(true, $get);
+
+		$this->model->setRawAttributes(['bool_bool' => encrypt(0)]);
+		$get = $this->model->bool_bool;
+		$this->assertSame(false, $get);
+
+		$this->model->setRawAttributes(['bool_bool' => encrypt('')]);
+		$get = $this->model->bool_bool;
+		$this->assertSame(false, $get);
+	}
+
+    /**
+     * Casting to bool (alias `boolean`).
+     *
+     * @return void
+     */
+    public function testBoolCasterAliasBooelan()
+    {
+		$this->model->setRawAttributes(['bool_boolean' => encrypt('true')]);
+		$get = $this->model->bool_boolean;
+		$this->assertSame(true, $get);
+	}
 }

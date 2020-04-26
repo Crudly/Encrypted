@@ -48,5 +48,19 @@ class StringCastTest extends TestCase
 
 		$this->assertIsString($get);
 		$this->assertSame($this->value, $get);
-    }
+	}
+
+    /**
+     * Casting to string.
+     *
+     * @return void
+     */
+    public function testStringCaster()
+    {
+		$this->model->setRawAttributes(['string' => encrypt(60.1)]);
+		$get = $this->model->string;
+
+		$this->assertIsString($get);
+		$this->assertSame('60.1', $get);
+	}
 }

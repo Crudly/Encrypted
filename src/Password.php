@@ -3,6 +3,7 @@
 namespace Crudly\Encrypted;
 
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
+use Hash;
 
 class Password implements CastsInboundAttributes
 {
@@ -31,6 +32,6 @@ class Password implements CastsInboundAttributes
      */
     public function set($model, string $key, $value, array $attributes)
 	{
-		return bcrypt($value);
+		return Hash::make($value);
 	}
 }

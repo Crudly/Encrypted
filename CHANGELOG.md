@@ -5,6 +5,9 @@
 ### Fixed
 - Null handling (null will now decrypt to null, and null already encrypted to null).
 
+### Changed
+- Uses `Hash::make()` instead of `bcrypt`.
+
 ## 1.1.0
 
 ### Added

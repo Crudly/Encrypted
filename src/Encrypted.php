@@ -12,7 +12,7 @@ class Encrypted implements CastsAttributes
 	 * @var string
 	 */
 	protected $castType;
-	   
+
 	/**
 	 * Caster that coerces types.
 	 *
@@ -45,8 +45,9 @@ class Encrypted implements CastsAttributes
      */
     public function get($model, string $key, $value, array $attributes)
 	{
-		$value = decrypt($value);
-		
+		if (!is_null($value))
+			$value = decrypt($value);
+
 		if (!$this->castType)
 			return $value;
 

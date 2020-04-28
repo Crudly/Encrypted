@@ -25,7 +25,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Crudly\\Encrypted\\": "src",
+            "Crudly\\Encrypted\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Crudly\\Encrypted\\Tests\\": "tests"
         }
     }

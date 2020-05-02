@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.2.0
 
 ### Fixed
 - Null handling (null will now decrypt to null, and null already encrypted to null).

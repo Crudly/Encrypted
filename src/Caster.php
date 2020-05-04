@@ -16,6 +16,13 @@ class Caster
 	 */
     protected $castType;
 
+	/**
+	 * The model whose properties we are casting.
+	 *
+	 * @var \Illuminate\Database\Eloquent\Model  $model
+	 */
+    protected $model;
+
     /**
 	 * Create a new cast class instance.
 	 *
@@ -39,7 +46,7 @@ class Caster
 		{
 			if (in_array($this->castType, ['array', 'json']))
 				return (array) $value;
-			
+
 			if ('collection' == $this->castType)
 				return $value instanceof Collection ? $value : collect($value);
 
@@ -89,5 +96,26 @@ class Caster
     public function getCasts()
     {
         return [null => $this->castType];
+	}
+
+    /**
+     * Set the model property.
+     *
+	 * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return array
+     */
+	public function setModel(\Illuminate\Database\Eloquent\Model $model)
+	{
+		$this->model = $model;
+	}
+
+	/**
+     * Get the format for dates from the model.
+     *
+     * @return string
+     */
+    public function getDateFormat()
+    {
+        return $this->model->getDateFormat();
     }
 }

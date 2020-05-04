@@ -26,6 +26,8 @@ class Model extends Eloquent
 		'bool_bool' => Encrypted::class.':bool',
 		'bool_boolean' => Encrypted::class.':boolean',
 
+		'datetime' => Encrypted::class.':datetime',
+
 		'password' => Password::class,
 	];
 }

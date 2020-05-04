@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+
+### Fixed
+- Casting to datetime.
+
 ## 1.2.0
 
 ### Fixed

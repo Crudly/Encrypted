@@ -51,6 +51,8 @@ class Encrypted implements CastsAttributes
 		if (!$this->castType)
 			return $value;
 
+		$this->caster->setModel($model);
+
 		return $this->caster->coerce($value);
 	}
 

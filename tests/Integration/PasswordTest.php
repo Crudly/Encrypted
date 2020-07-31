@@ -26,7 +26,7 @@ class PasswordTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->password = $this->value;
 		$set = $this->model->getAttributes()['password'];

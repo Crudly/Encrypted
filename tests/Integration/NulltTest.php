@@ -24,7 +24,7 @@ class NullTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
@@ -37,7 +37,7 @@ class NullTest extends TestCase
      *
      * @return void
      */
-    public function testGetterFromNull()
+    public function testGetterFromNull(): void
     {
 		$this->model->setRawAttributes(['column' => null]);
 		$get = $this->model->column;

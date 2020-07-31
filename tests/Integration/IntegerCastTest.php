@@ -25,7 +25,7 @@ class IntegerCastTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
@@ -40,7 +40,7 @@ class IntegerCastTest extends TestCase
      *
      * @return void
      */
-    public function testGetter()
+    public function testGetter(): void
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
@@ -52,7 +52,7 @@ class IntegerCastTest extends TestCase
      *
      * @return void
      */
-    public function testCaster()
+    public function testCaster(): void
     {
 		$this->model->setRawAttributes(['integer_integer' => encrypt(60.1)]);
 		$get = $this->model->integer_integer;
@@ -68,7 +68,7 @@ class IntegerCastTest extends TestCase
      *
      * @return void
      */
-    public function testCasterAliasInt()
+    public function testCasterAliasInt(): void
     {
 		$this->model->setRawAttributes(['integer_int' => encrypt(73.4)]);
 		$get = $this->model->integer_int;

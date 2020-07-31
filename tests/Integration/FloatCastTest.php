@@ -25,7 +25,7 @@ class FloatCastTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
@@ -40,7 +40,7 @@ class FloatCastTest extends TestCase
      *
      * @return void
      */
-    public function testGetter()
+    public function testGetter(): void
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
@@ -52,7 +52,7 @@ class FloatCastTest extends TestCase
      *
      * @return void
      */
-    public function testCaster()
+    public function testCaster(): void
     {
 		$this->model->setRawAttributes(['float_float' => encrypt(35)]);
 		$get = $this->model->float_float;
@@ -68,7 +68,7 @@ class FloatCastTest extends TestCase
      *
      * @return void
      */
-    public function testCasterAliasReal()
+    public function testCasterAliasReal(): void
     {
 		$this->model->setRawAttributes(['float_real' => encrypt('22.3')]);
 		$get = $this->model->float_real;
@@ -80,7 +80,7 @@ class FloatCastTest extends TestCase
      *
      * @return void
      */
-    public function testCasterAliasDouble()
+    public function testCasterAliasDouble(): void
     {
 		$this->model->setRawAttributes(['float_double' => encrypt((int) 15)]);
 		$get = $this->model->float_double;

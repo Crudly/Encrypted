@@ -25,7 +25,7 @@ class CastingOptionsTest extends TestCase
      *
      * @return void
      */
-    public function testDecimal()
+    public function testDecimal(): void
     {
 		$this->model->setRawAttributes(['decimal_2' => $this->encrypted]);
 		$get = $this->model->decimal_2;

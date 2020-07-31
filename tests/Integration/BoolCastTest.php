@@ -25,7 +25,7 @@ class BoolCastTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
@@ -40,7 +40,7 @@ class BoolCastTest extends TestCase
      *
      * @return void
      */
-    public function testGetter()
+    public function testGetter(): void
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
@@ -52,7 +52,7 @@ class BoolCastTest extends TestCase
      *
      * @return void
      */
-    public function testCaster()
+    public function testCaster(): void
     {
 		$this->model->setRawAttributes(['bool_bool' => encrypt('true')]);
 		$get = $this->model->bool_bool;
@@ -84,7 +84,7 @@ class BoolCastTest extends TestCase
      *
      * @return void
      */
-    public function testCasterAliasBooelan()
+    public function testCasterAliasBooelan(): void
     {
 		$this->model->setRawAttributes(['bool_boolean' => encrypt('true')]);
 		$get = $this->model->bool_boolean;

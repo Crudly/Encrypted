@@ -26,7 +26,7 @@ class Caster
     /**
 	 * Create a new cast class instance.
 	 *
-	 * @param  string|null  $castType
+	 * @param  string  $castType
 	 * @return void
 	 */
 	public function __construct(string $castType)
@@ -66,7 +66,7 @@ class Caster
      *
      * @return string
      */
-	protected function getCastType()
+	protected function getCastType(): string
 	{
         if ($this->isCustomDateTimeCast($this->castType))
             return 'custom_datetime';
@@ -83,7 +83,7 @@ class Caster
      *
      * @return bool
      */
-    protected function isClassCastable()
+    protected function isClassCastable(): bool
     {
         return false;
 	}
@@ -93,7 +93,7 @@ class Caster
      *
      * @return array
      */
-    public function getCasts()
+    public function getCasts(): array
     {
         return [null => $this->castType];
 	}
@@ -102,9 +102,8 @@ class Caster
      * Set the model property.
      *
 	 * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @return array
      */
-	public function setModel(\Illuminate\Database\Eloquent\Model $model)
+	public function setModel(\Illuminate\Database\Eloquent\Model $model): void
 	{
 		$this->model = $model;
 	}
@@ -114,7 +113,7 @@ class Caster
      *
      * @return string
      */
-    public function getDateFormat()
+    public function getDateFormat(): string
     {
         return $this->model->getDateFormat();
     }

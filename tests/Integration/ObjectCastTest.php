@@ -27,7 +27,7 @@ class ObjectCastTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
@@ -42,7 +42,7 @@ class ObjectCastTest extends TestCase
      *
      * @return void
      */
-    public function testGetter()
+    public function testGetter(): void
     {
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;

@@ -20,7 +20,7 @@ class CasterTest extends TestCase
      *
      * @return void
      */
-    public function testToString()
+    public function testToString(): void
     {
 		$caster = new Caster('string');
 
@@ -33,7 +33,7 @@ class CasterTest extends TestCase
      *
      * @return void
      */
-    public function testToDecimal()
+    public function testToDecimal(): void
     {
 		$caster = new Caster('decimal:2');
 
@@ -48,7 +48,7 @@ class CasterTest extends TestCase
      *
      * @return void
      */
-    public function testToDatetime()
+    public function testToDatetime(): void
     {
 		$caster = new Caster('datetime');
 		$casted = $caster->coerce('1592-03-14');
@@ -68,7 +68,7 @@ class CasterTest extends TestCase
      *
      * @return void
      */
-    public function testToObject()
+    public function testToObject(): void
     {
 		$caster = new Caster('object');
 		$list = (object) ['secret' => 'classified'];
@@ -77,7 +77,7 @@ class CasterTest extends TestCase
 		$this->assertIsObject($castedJSON);
 		$this->assertInstanceOf('stdClass', $castedJSON);
 		$this->assertEquals($list, $castedJSON);
-		
+
 		$castedObject = $caster->coerce($list);
 		$this->assertSame($list, $castedObject);
 	}
@@ -87,7 +87,7 @@ class CasterTest extends TestCase
      *
      * @return void
      */
-    public function testToArray()
+    public function testToArray(): void
     {
 		$caster = new Caster('array');
 		$list = ['secret', 'classified'];
@@ -95,7 +95,7 @@ class CasterTest extends TestCase
 		$castedJSON = $caster->coerce(json_encode($list));
 		$this->assertIsArray($castedJSON);
 		$this->assertEquals($list, $castedJSON);
-		
+
 		$castedArray = $caster->coerce($list);
 		$this->assertSame($list, $castedArray);
 	}
@@ -105,7 +105,7 @@ class CasterTest extends TestCase
      *
      * @return void
      */
-    public function testToCollection()
+    public function testToCollection(): void
     {
 		$caster = new Caster('collection');
 		$list = ['secret', 'classified'];
@@ -114,11 +114,11 @@ class CasterTest extends TestCase
 		$castedJSON = $caster->coerce(json_encode($list));
 		$this->assertInstanceOf(Collection::class, $castedJSON);
 		$this->assertEquals($collection, $castedJSON);
-		
+
 		$castedArray = $caster->coerce($list);
 		$this->assertInstanceOf(Collection::class, $castedJSON);
 		$this->assertSame($list, $castedArray->toArray());
-		
+
 		$castedCollection = $caster->coerce($collection);
 		$this->assertSame($collection, $castedCollection);
 	}

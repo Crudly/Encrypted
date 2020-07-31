@@ -27,7 +27,7 @@ class DatetimeCastTest extends TestCase
      *
      * @return void
      */
-    public function testSetter()
+    public function testSetter(): void
     {
 		$this->model->datetime = $this->value;
 		$set = $this->model->getAttributes()['datetime'];
@@ -43,7 +43,7 @@ class DatetimeCastTest extends TestCase
      *
      * @return void
      */
-    public function testGetter()
+    public function testGetter(): void
     {
 		$this->model->setRawAttributes(['datetime' => $this->encrypted]);
 		$get = $this->model->datetime;
@@ -57,7 +57,7 @@ class DatetimeCastTest extends TestCase
      *
      * @return void
      */
-    public function testCaster()
+    public function testCaster(): void
     {
 		$this->model->setRawAttributes(['datetime' => encrypt($this->value->format('Y-m-d H:i:s.u'))]);
 		$get = $this->model->datetime;

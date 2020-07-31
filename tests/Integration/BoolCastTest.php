@@ -11,49 +11,43 @@ class BoolCastTest extends TestCase
 	protected $value;
 	protected $encrypted;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+	protected function setUp(): void
+	{
+		parent::setUp();
 
 		$this->model = new Model;
 		$this->value = true;
 		$this->encrypted = encrypt($this->value);
-    }
+	}
 
-    /**
-     * Encryption for booleans.
-     *
-     * @return void
-     */
-    public function testSetter(): void
-    {
+	/**
+	 * Encryption for booleans.
+	 */
+	public function testSetter(): void
+	{
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
 
 		$this->assertIsString($set);
 		$this->assertNotSame($this->value, $set);
 		$this->assertSame($this->value, decrypt($set));
-    }
+	}
 
-    /**
-     * Decryption for booleans.
-     *
-     * @return void
-     */
-    public function testGetter(): void
-    {
+	/**
+	 * Decryption for booleans.
+	 */
+	public function testGetter(): void
+	{
 		$this->model->setRawAttributes(['column' => $this->encrypted]);
 		$get = $this->model->column;
 		$this->assertSame($this->value, $get);
-    }
+	}
 
-    /**
-     * Casting to bool.
-     *
-     * @return void
-     */
-    public function testCaster(): void
-    {
+	/**
+	 * Casting to bool.
+	 */
+	public function testCaster(): void
+	{
 		$this->model->setRawAttributes(['bool_bool' => encrypt('true')]);
 		$get = $this->model->bool_bool;
 		$this->assertSame(true, $get);
@@ -79,13 +73,11 @@ class BoolCastTest extends TestCase
 		$this->assertSame(false, $get);
 	}
 
-    /**
-     * Casting to bool (alias `boolean`).
-     *
-     * @return void
-     */
-    public function testCasterAliasBooelan(): void
-    {
+	/**
+	 * Casting to bool (alias `boolean`).
+	 */
+	public function testCasterAliasBooelan(): void
+	{
 		$this->model->setRawAttributes(['bool_boolean' => encrypt('true')]);
 		$get = $this->model->bool_boolean;
 		$this->assertSame(true, $get);

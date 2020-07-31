@@ -4,7 +4,6 @@ namespace Crudly\Encrypted\Tests\Integration;
 
 use Crudly\Encrypted\Tests\TestCase;
 use Crudly\Encrypted\Tests\Models\Model;
-
 use Carbon\Carbon;
 
 class DatetimeCastTest extends TestCase
@@ -13,22 +12,20 @@ class DatetimeCastTest extends TestCase
 	protected $value;
 	protected $encrypted;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+	protected function setUp(): void
+	{
+		parent::setUp();
 
 		$this->model = new Model;
 		$this->value = now();
 		$this->encrypted = encrypt($this->value);
-    }
+	}
 
-    /**
-     * Encryption for datetime.
-     *
-     * @return void
-     */
-    public function testSetter(): void
-    {
+	/**
+	 * Encryption for datetime.
+	 */
+	public function testSetter(): void
+	{
 		$this->model->datetime = $this->value;
 		$set = $this->model->getAttributes()['datetime'];
 
@@ -36,29 +33,25 @@ class DatetimeCastTest extends TestCase
 		$this->assertNotEquals($this->value, $set);
 		$this->assertEquals($this->value, decrypt($set));
 		$this->assertTrue($this->value->equalTo(decrypt($set)));
-    }
+	}
 
-    /**
-     * Decryption for datetime.
-     *
-     * @return void
-     */
-    public function testGetter(): void
-    {
+	/**
+	 * Decryption for datetime.
+	 */
+	public function testGetter(): void
+	{
 		$this->model->setRawAttributes(['datetime' => $this->encrypted]);
 		$get = $this->model->datetime;
 		$this->assertInstanceOf(Carbon::class, $get);
 		$this->assertEquals($this->value, $get);
 		$this->assertTrue($this->value->equalTo($get));
-    }
+	}
 
-    /**
-     * Casting to datetime.
-     *
-     * @return void
-     */
-    public function testCaster(): void
-    {
+	/**
+	 * Casting to datetime.
+	 */
+	public function testCaster(): void
+	{
 		$this->model->setRawAttributes(['datetime' => encrypt($this->value->format('Y-m-d H:i:s.u'))]);
 		$get = $this->model->datetime;
 		$this->assertInstanceOf(Carbon::class, $get);

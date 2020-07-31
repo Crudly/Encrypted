@@ -14,19 +14,18 @@ class Caster
 	 *
 	 * @var string
 	 */
-    protected $castType;
+	protected $castType;
 
 	/**
 	 * The model whose properties we are casting.
 	 *
-	 * @var \Illuminate\Database\Eloquent\Model  $model
+	 * @var \Illuminate\Database\Eloquent\Model 
 	 */
-    protected $model;
+	protected $model;
 
-    /**
+	/**
 	 * Create a new cast class instance.
 	 *
-	 * @param  string  $castType
 	 * @return void
 	 */
 	public function __construct(string $castType)
@@ -34,17 +33,18 @@ class Caster
 		$this->castType = $castType;
 	}
 
-    /**
- 	 * Coerce value to type.
- 	 *
+	/**
+	 * Coerce value to type.
+	 *
 	 * @param  mixed  $value
+	 *
 	 * @return mixed
 	 */
 	public function coerce($value)
 	{
-		if (!is_string($value))
+		if (!\is_string($value))
 		{
-			if (in_array($this->castType, ['array', 'json']))
+			if (\in_array($this->castType, ['array', 'json']))
 				return (array) $value;
 
 			if ('collection' == $this->castType)
@@ -53,7 +53,7 @@ class Caster
 			if ('object' == $this->castType)
 				return (object) $value;
 
-			if (in_array($this->castType, ['date', 'datetime']) && is_object($value))
+			if (\in_array($this->castType, ['date', 'datetime']) && \is_object($value))
 				return (object) $value;
 		}
 
@@ -62,14 +62,12 @@ class Caster
 	}
 
 	/**
-     * Get the type of cast. Used by HasAttributes::castAttribute
-     *
-     * @return string
-     */
+	 * Get the type of cast. Used by HasAttributes::castAttribute.
+	 */
 	protected function getCastType(): string
 	{
-        if ($this->isCustomDateTimeCast($this->castType))
-            return 'custom_datetime';
+		if ($this->isCustomDateTimeCast($this->castType))
+			return 'custom_datetime';
 
 		if ($this->isDecimalCast($this->castType))
 			return 'decimal';
@@ -78,43 +76,35 @@ class Caster
 	}
 
 	/**
-     * Tell HasAttributes::castAttribute that we don't use further casting classes.
+	 * Tell HasAttributes::castAttribute that we don't use further casting classes.
 	 * Might allow in the future if there are some use cases.
-     *
-     * @return bool
-     */
-    protected function isClassCastable(): bool
-    {
-        return false;
+	 */
+	protected function isClassCastable(): bool
+	{
+		return false;
 	}
 
-    /**
-     * Scam the casts array for HasAttributes::castAttribute.
-     *
-     * @return array
-     */
-    public function getCasts(): array
-    {
-        return [null => $this->castType];
+	/**
+	 * Scam the casts array for HasAttributes::castAttribute.
+	 */
+	public function getCasts(): array
+	{
+		return [null => $this->castType];
 	}
 
-    /**
-     * Set the model property.
-     *
-	 * @param  \Illuminate\Database\Eloquent\Model  $model
-     */
+	/**
+	 * Set the model property.
+	 */
 	public function setModel(\Illuminate\Database\Eloquent\Model $model): void
 	{
 		$this->model = $model;
 	}
 
 	/**
-     * Get the format for dates from the model.
-     *
-     * @return string
-     */
-    public function getDateFormat(): string
-    {
-        return $this->model->getDateFormat();
-    }
+	 * Get the format for dates from the model.
+	 */
+	public function getDateFormat(): string
+	{
+		return $this->model->getDateFormat();
+	}
 }

@@ -11,22 +11,20 @@ class CastingOptionsTest extends TestCase
 	protected $value;
 	protected $encrypted;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+	protected function setUp(): void
+	{
+		parent::setUp();
 
 		$this->model = new Model;
 		$this->value = 12.838;
 		$this->encrypted = encrypt($this->value);
-    }
+	}
 
-    /**
-     * Casting for decimal.
-     *
-     * @return void
-     */
-    public function testDecimal(): void
-    {
+	/**
+	 * Casting for decimal.
+	 */
+	public function testDecimal(): void
+	{
 		$this->model->setRawAttributes(['decimal_2' => $this->encrypted]);
 		$get = $this->model->decimal_2;
 		$this->assertSame('12.84', $get);
@@ -34,5 +32,5 @@ class CastingOptionsTest extends TestCase
 		$this->model->setRawAttributes(['decimal_4' => $this->encrypted]);
 		$get = $this->model->decimal_4;
 		$this->assertSame('12.8380', $get);
-    }
+	}
 }

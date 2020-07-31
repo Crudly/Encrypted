@@ -4,7 +4,6 @@ namespace Crudly\Encrypted\Tests\Unit;
 
 use Crudly\Encrypted\Caster;
 use Crudly\Encrypted\Tests\TestCase;
-
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -15,26 +14,22 @@ use Illuminate\Support\Collection;
  */
 class CasterTest extends TestCase
 {
-    /**
-     * Cast to string.
-     *
-     * @return void
-     */
-    public function testToString(): void
-    {
+	/**
+	 * Cast to string.
+	 */
+	public function testToString(): void
+	{
 		$caster = new Caster('string');
 
 		$this->assertIsString($caster->coerce(12));
 		$this->assertSame('55.1', $caster->coerce(55.1));
-    }
+	}
 
-    /**
-     * Cast to decimal.
-     *
-     * @return void
-     */
-    public function testToDecimal(): void
-    {
+	/**
+	 * Cast to decimal.
+	 */
+	public function testToDecimal(): void
+	{
 		$caster = new Caster('decimal:2');
 
 		$this->assertIsString($caster->coerce(12));
@@ -43,13 +38,11 @@ class CasterTest extends TestCase
 		$this->assertSame('78.99', $caster->coerce(78.9898));
 	}
 
-    /**
-     * Cast to datetime.
-     *
-     * @return void
-     */
-    public function testToDatetime(): void
-    {
+	/**
+	 * Cast to datetime.
+	 */
+	public function testToDatetime(): void
+	{
 		$caster = new Caster('datetime');
 		$casted = $caster->coerce('1592-03-14');
 
@@ -63,13 +56,11 @@ class CasterTest extends TestCase
 		$this->assertSame($now, $noncasted);
 	}
 
-    /**
-     * Cast to object.
-     *
-     * @return void
-     */
-    public function testToObject(): void
-    {
+	/**
+	 * Cast to object.
+	 */
+	public function testToObject(): void
+	{
 		$caster = new Caster('object');
 		$list = (object) ['secret' => 'classified'];
 
@@ -82,13 +73,11 @@ class CasterTest extends TestCase
 		$this->assertSame($list, $castedObject);
 	}
 
-    /**
-     * Cast to array.
-     *
-     * @return void
-     */
-    public function testToArray(): void
-    {
+	/**
+	 * Cast to array.
+	 */
+	public function testToArray(): void
+	{
 		$caster = new Caster('array');
 		$list = ['secret', 'classified'];
 
@@ -100,13 +89,11 @@ class CasterTest extends TestCase
 		$this->assertSame($list, $castedArray);
 	}
 
-    /**
-     * Cast to collection.
-     *
-     * @return void
-     */
-    public function testToCollection(): void
-    {
+	/**
+	 * Cast to collection.
+	 */
+	public function testToCollection(): void
+	{
 		$caster = new Caster('collection');
 		$list = ['secret', 'classified'];
 		$collection = collect(['secret', 'classified']);

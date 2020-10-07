@@ -19,7 +19,7 @@ class Caster
 	/**
 	 * The model whose properties we are casting.
 	 *
-	 * @var \Illuminate\Database\Eloquent\Model 
+	 * @var \Illuminate\Database\Eloquent\Model
 	 */
 	protected $model;
 

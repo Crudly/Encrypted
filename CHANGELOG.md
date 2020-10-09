@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.0
+
+### Updated
+- Laravel 8.
+
 ## 1.2.1
 
 ### Fixed

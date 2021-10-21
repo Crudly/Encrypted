@@ -1,0 +1,40 @@
+name: Run tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    name: Test on ${{matrix.php}}
+
+    strategy:
+      matrix:
+        php: [7.3, 7.4, 8.0, 8.1]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{matrix.php}}
+
+      #- name: Cache Composer dependencies
+      #  uses: actions/cache@v2
+      #  with:
+      #    path: /tmp/composer-cache
+      #    key: composer-${{ hashFiles('**/composer.json') }}
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: ${{matrix.php}}
+
+      - name: Run tests
+        run: vendor/bin/phpunit --testdox --coverage-text

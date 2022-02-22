@@ -12,8 +12,6 @@ class Password implements CastsInboundAttributes
 	 *
 	 * @param  \Illuminate\Database\Eloquent\Model  $model
 	 * @param  array  $value
-	 *
-	 * @return string
 	 */
 	public function set($model, string $key, $value, array $attributes): string
 	{

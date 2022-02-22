@@ -8,22 +8,16 @@ class Encrypted implements CastsAttributes
 {
 	/**
 	 * The type for coercion.
-	 *
-	 * @var string
 	 */
-	protected $castType;
+	protected ?string $castType;
 
 	/**
 	 * Caster that coerces types.
-	 *
-	 * @var Crudly\Encrypted\Caster
 	 */
-	protected $caster;
+	protected Caster $caster;
 
 	/**
 	 * Create a new cast class instance.
-	 *
-	 * @return void
 	 */
 	public function __construct(string $castType = null)
 	{

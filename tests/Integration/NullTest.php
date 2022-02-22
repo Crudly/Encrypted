@@ -5,7 +5,7 @@ namespace Crudly\Encrypted\Tests\Integration;
 use Crudly\Encrypted\Tests\TestCase;
 use Crudly\Encrypted\Tests\Models\Model;
 
-class NulltTest extends TestCase
+class NullTest extends TestCase
 {
 	protected $model;
 	protected $value;
@@ -17,6 +17,7 @@ class NulltTest extends TestCase
 
 		$this->model = new Model;
 		$this->value = null;
+		$this->encrypted = encrypt($this->value);
 	}
 
 	/**
@@ -27,7 +28,9 @@ class NulltTest extends TestCase
 		$this->model->column = $this->value;
 		$set = $this->model->getAttributes()['column'];
 
-		$this->assertNull($set);
+		$this->assertIsString($set);
+		$this->assertNotSame($this->value, $set);
+		$this->assertSame($this->value, decrypt($set));
 	}
 
 	/**

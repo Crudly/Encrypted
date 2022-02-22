@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+
+### Updated
+- Laravel 9.
+
 ## 1.3.0
 
 ### Updated

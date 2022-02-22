@@ -2,6 +2,7 @@
 
 namespace Crudly\Encrypted;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasAttributes;
 
@@ -11,22 +12,16 @@ class Caster
 
 	/**
 	 * The type for coercion.
-	 *
-	 * @var string
 	 */
-	protected $castType;
+	protected string $castType;
 
 	/**
 	 * The model whose properties we are casting.
-	 *
-	 * @var \Illuminate\Database\Eloquent\Model
 	 */
-	protected $model;
+	protected Model $model;
 
 	/**
 	 * Create a new cast class instance.
-	 *
-	 * @return void
 	 */
 	public function __construct(string $castType)
 	{
@@ -35,10 +30,6 @@ class Caster
 
 	/**
 	 * Coerce value to type.
-	 *
-	 * @param  mixed  $value
-	 *
-	 * @return mixed
 	 */
 	public function coerce($value)
 	{
@@ -95,7 +86,7 @@ class Caster
 	/**
 	 * Set the model property.
 	 */
-	public function setModel(\Illuminate\Database\Eloquent\Model $model): void
+	public function setModel(Model $model): void
 	{
 		$this->model = $model;
 	}

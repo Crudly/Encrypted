@@ -33,7 +33,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: 	composer-${{ hashFiles('**/composer.lock') }}
+          key: 	composer-${{ hashFiles('**/composer.json') }}
           restore-keys: |
             composer-
 

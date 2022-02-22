@@ -32,13 +32,13 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
+          path: ~/.composer/cache/files
           key: 	composer-${{ hashFiles('**/composer.json') }}
           restore-keys: |
             composer-
 
       - name: Install deps
-        run: composer update --prefer-source --no-interaction
+        run: composer update --no-interaction
 
       - name: Run tests
         run: vendor/bin/phpunit --testdox --coverage-text

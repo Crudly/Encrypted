@@ -25,18 +25,6 @@ jobs:
         with:
           php-version: ${{matrix.php}}
 
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: 	composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: |
-            composer-
-
       - name: Install deps
         run: composer update --no-interaction
 

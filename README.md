@@ -4,6 +4,10 @@
 [![Release](https://img.shields.io/github/v/release/crudly/Encrypted?style=flat-square)](https://github.com/crudly/Encrypted/releases/latest)
 [![License](https://img.shields.io/packagist/l/crudly/encrypted?style=flat-square)](LICENSE)
 
+> **Note** This package is no longer needed for new projects as [hashing is now](https://github.com/laravel/framework/pull/46947)
+> among the native casts and encryption was there for a while already.
+> We will probably keep it up to date for a few more years because it usually only takes bumping a version tag.
+
 A custom cast class for Laravel Eloquent that encrypts or hashes your values. Package is small and provides just a few, simple, well tested features.
 
 ```php
